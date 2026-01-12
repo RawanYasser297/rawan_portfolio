@@ -28,10 +28,7 @@ const projects = [
     github: "https://github.com/RawanYasser297/around-the-world",
     img: "/image/around-the-world.png",
   },
-  {
-      title: "Todo List",
-      description:
-        "A modern and responsive Todo application .It supports filters, drag & drop reordering, and localStorage persistence.",
+  { id:"todo",
       gradient: "from-blue-500 to-cyan-500",
       tags: ["HTML", "SCSS", "JS", "light/dark theme"],
       live: "https://rawanyasser297.github.io/todo-list/",

@@ -46,7 +46,13 @@
       "countries": {
         "title": "Around The World",
         "description": "A React app that lists countries, supports search, filtering, and country details."
-      }
+      },
+        "todo":{
+          "title": "Todo List",
+          "description":"A modern and responsive Todo application .It supports filters, drag & drop reordering, and localStorage persistence."
+        }
+      
+
     }
   },
   "skills": {
