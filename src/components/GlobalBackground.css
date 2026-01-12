@@ -1,0 +1,6 @@
+.global-bg {
+  position: fixed; /* ثابته ورا كل الصفحات */
+  inset: 0;
+  z-index: -1; /* خلف المحتوى */
+  pointer-events: none;
+}

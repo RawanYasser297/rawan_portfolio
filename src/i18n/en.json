@@ -1,0 +1,78 @@
+{
+  "faq": {
+    "title": "FAQ",
+    "who": {
+      "q": "Who am I?",
+      "a": "<strong>Hi, I’m Rawan</strong><br/>I am a web developer specializing in building modern, fast, and scalable web applications."
+    },
+    "website": {
+      "q": "Why does your startup need a website?",
+      "a": "A website builds trust, gives full control over your brand, and allows customers to find and contact you at any time."
+    },
+    "compare": {
+      "q": "Website vs Facebook or WhatsApp?",
+      "a": "A website is fully owned by you, ranks on Google, and presents your business professionally without platform limitations."
+    }
+  },
+   "nav": {
+    "skills": "Skills",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": {
+      "line1": "React &",
+      "line2": "TypeScript",
+      "line3": "Developer"
+    },
+    "subtitle": "Building scalable web applications with modern technologies",
+    "buttons": {
+      "work": "View My Work",
+      "cv": "Download CV"
+    }
+  },
+  "projects": {
+    "title": "Featured Work",
+    "view": "View",
+    "items": {
+      "ecommerce": {
+        "title": "E-Commerce Platform",
+        "description": "A high-performance full-stack e-commerce application."
+      },
+      "blog": {
+        "title": "Blog App",
+        "description": "A full-stack blog application with categories, article details, and skeleton loaders."
+      },
+      "countries": {
+        "title": "Around The World",
+        "description": "A React app that lists countries, supports search, filtering, and country details."
+      },
+        "todo":{
+          "title": "Todo List",
+          "description":"A modern and responsive Todo application .It supports filters, drag & drop reordering, and localStorage persistence."
+        }
+      
+
+    }
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "categories": {
+      "frontend": "Frontend Development",
+      "design": "Design",
+      "backend": "Backend Development",
+      "tools": "Tools"
+    }
+  },
+  "contact": {
+    "title": "Let's Create Together",
+    "subtitle": "Have a project in mind? Let's collaborate and bring your ideas to life.",
+    "send": "+201025104928",
+    "copyright": "© 2025 Creative Portfolio. Crafted with passion.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  }
+}
