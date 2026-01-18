@@ -10,22 +10,26 @@ const certifications = [
   {
     id: 1,
     title: "Front-End Development Diploma",
-    image: "../../public/certifications/Rawan-React-Deep-Dive-شهادة-اتمام-دورة-أساسيات-React-Deep-Dive-منصة-المدرسة (1).pdf",
+    image:
+      "/certifications/Rawan-React-Deep-Dive-شهادة-اتمام-دورة-أساسيات-React-Deep-Dive-منصة-المدرسة (1).pdf",
   },
   {
     id: 2,
     title: "AI Tools for Developers",
-    image: "../../public/certifications/Rawan-مدخل-إلى-الذكاء-الاصطناعي-شهادة-اتمام-دورة-Introduction-to-AI-منصة-المدرسة.pdf",
+    image:
+      "/certifications/Rawan-مدخل-إلى-الذكاء-الاصطناعي-شهادة-اتمام-دورة-Introduction-to-AI-منصة-المدرسة.pdf",
   },
   {
     id: 3,
     title: "Team Collaboration & Git",
-    image: "../../public/certifications/Rawan-دورة-تعليم-Git-وجيت-هب-GitHub-Git-and-GitHub-منصة-المدرسة.pdf",
+    image:
+      "/certifications/Rawan-دورة-تعليم-Git-وجيت-هب-GitHub-Git-and-GitHub-منصة-المدرسة.pdf",
   },
   {
     id: 4,
     title: "Data Structures & Algorithms",
-    image: "../../public/certifications/Rawan-هياكل-البيانات-الأساسية-شهادة-اتمام-دورة-هياكل-البيانات-هياكل-البيانات-الأساسية-منصة-المدرسة.pdf",
+    image:
+      "/certifications/Rawan-هياكل-البيانات-الأساسية-شهادة-اتمام-دورة-هياكل-البيانات-هياكل-البيانات-الأساسية-منصة-المدرسة.pdf",
   },
 ];
 
@@ -84,12 +88,14 @@ const About = () => {
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            style={{ direction: "rtl",height:"330px" }}
+            style={{ direction: "rtl", height: "330px" }}
           >
             {certifications.map((cert) => (
               <SwiperSlide key={cert.id}>
                 <div className="rounded-2xl h-[280px] max-w-[380px] overflow-hidden bg-card shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition">
-                  <PdfViewer fileUrl={cert.image} />
+                  <a href={cert.image} target="_blank">
+                    <PdfViewer fileUrl={cert.image} />
+                  </a>
                 </div>
               </SwiperSlide>
             ))}
