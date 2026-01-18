@@ -21,6 +21,7 @@ const Hero = () => {
   return (
     <section
       dir={isArabic ? "ltr" : "rtl"}
+      id="home"
       className="relative min-h-screen overflow-hidden pt-4"
     >
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[78vh] container mx-auto px-4 text-center">

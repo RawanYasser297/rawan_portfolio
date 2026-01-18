@@ -44,11 +44,14 @@ const Header = () => {
     }
 
     if (location.pathname !== "/") {
-      nav(`/#home`);
+      nav(`/#${id}`);
       return;
     }
 
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      nav('/')
+    }, 1);
   };
 
   const laptop = (
