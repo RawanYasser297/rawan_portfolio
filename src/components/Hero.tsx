@@ -2,12 +2,13 @@ import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { Link } from "react-router-dom";
 
 const onButtonClick = () => {
   const link = document.createElement("a");
-  link.href = "/image/Black and White Minimalist Accountant Resume.pdf"; 
-  link.target = "_blank"; 
-  link.download = "RawanYasser_CV.pdf"; 
+  link.href = "/image/Black and White Minimalist Accountant Resume.pdf";
+  link.target = "_blank";
+  link.download = "RawanYasser_CV.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -19,68 +20,45 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden"
-      dir={isArabic ? "rtl" : "ltr"}
+      dir={isArabic ? "ltr" : "rtl"}
+      className="relative min-h-screen overflow-hidden pt-4"
     >
-      <nav className="flex w-full p-6 md:p-10 justify-between items-center">
-        <ul className="flex flex-row gap-6">
-          <li
-            className="text-xl font-bold gradient-text cursor-pointer"
-            onClick={() =>
-              document
-                .getElementById("skills")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            {t("nav.skills")}
-          </li>
-
-          <li
-            className="text-xl font-bold gradient-text cursor-pointer"
-            onClick={() =>
-              document
-                .getElementById("faq")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            {t("nav.faq")}
-          </li>
-
-          <li
-            className="text-xl font-bold gradient-text cursor-pointer"
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            {t("nav.contact")}
-          </li>
-        </ul>
-
-        <LanguageSwitcher />
-      </nav>
-
-      <div className="flex flex-col items-center justify-center relative z-10 container mx-auto px-4 text-center">
-        <div className="space-y-6 max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold leading-tight">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[78vh] container mx-auto px-4 text-center">
+        <div
+          className="
+            space-y-6 sm:space-y-8
+            max-w-xl sm:max-w-2xl md:max-w-4xl
+            backdrop-blur-md bg-white/10
+            border border-white/15
+            rounded-2xl sm:rounded-3xl
+            p-6 sm:p-10 md:p-14
+            shadow-[var(--shadow-glow)]
+          "
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight">
             <span className="block gradient-text">{t("hero.title.line1")}</span>
             <span className="block gradient-text">{t("hero.title.line2")}</span>
             <span className="block gradient-text">{t("hero.title.line3")}</span>
           </h1>
 
-          <p className="text-white tracking-[0.5px] text-xl md:text-2xl max-w-2xl mx-auto">
+          <p className="text-[hsl(229,75%,70%)] tracking-wide text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
             {t("hero.subtitle")}
           </p>
 
           <div
-            className={`flex gap-4 justify-center pt-8 ${
-              isArabic ? "flex-row-reverse" : ""
+            className={`flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center pt-4 sm:pt-6 ${
+              isArabic ? "sm:flex-row-reverse" : ""
             }`}
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+              className="
+                w-full sm:w-auto
+                px-8 py-6 text-base sm:text-lg rounded-xl
+                bg-white text-[hsl(230_25%_15%)]
+                hover:scale-105 transition
+                shadow-lg
+              "
               onClick={() =>
                 document
                   .getElementById("projects")
@@ -93,14 +71,13 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
-              onClick={onButtonClick}>
+              className="w-full sm:w-auto
+                px-8 py-6 text-base sm:text-lg rounded-xl"
+              onClick={onButtonClick}
+            >
               {t("hero.buttons.cv")}
             </Button>
           </div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-muted-foreground" />
         </div>
       </div>
     </section>

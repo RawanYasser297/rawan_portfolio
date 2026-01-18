@@ -14,10 +14,12 @@
       "a": "A website is fully owned by you, ranks on Google, and presents your business professionally without platform limitations."
     }
   },
-   "nav": {
+  "nav": {
+    "home":"Home",
     "skills": "Skills",
-    "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "about": "About me",
+    "projects":"Projects"
   },
   "hero": {
     "title": {
@@ -37,22 +39,20 @@
     "items": {
       "ecommerce": {
         "title": "E-Commerce Platform",
-        "description": "A high-performance full-stack e-commerce application."
+        "description": "A full-stack e-commerce application"
       },
       "blog": {
         "title": "Blog App",
-        "description": "A full-stack blog application with categories, article details, and skeleton loaders."
+        "description": "A full-stack blog application with categories, article details"
       },
       "countries": {
         "title": "Around The World",
-        "description": "A React app that lists countries, supports search, filtering, and country details."
+        "description": "A React app that lists countries, supports search, filtering, and country details"
       },
-        "todo":{
-          "title": "Todo List",
-          "description":"A modern and responsive Todo application .It supports filters, drag & drop reordering, and localStorage persistence."
-        }
-      
-
+      "todo": {
+        "title": "Todo List",
+        "description": "A modern and responsive Todo application"
+      }
     }
   },
   "skills": {
@@ -74,5 +74,29 @@
       "linkedin": "LinkedIn",
       "email": "Email"
     }
+  },
+  "about": {
+    "hi":"Hi,I’m Rawan,",
+    "intro": "I was born in Cairo, Egypt. In 2026, I am 25 years old.I live in Cairo, I studied Accounting and Management at Ain Shams University, Faculty of Business. However, I was not passionate about accounting and did not perform well in it, so I decided to search for another career path.",
+
+    "journey": "I explored many fields, but none of them truly connected with me until January 2023, when I discovered programming—and it stuck. I spent nearly two years learning through YouTube, until I realized that I needed a mentor, a structured learning path, and to be closer to a real professional team in the industry.",
+
+    "platform": "By the grace of Allah, I found the Almdrasa platform, which was extremely helpful and transformative for me. Through it, I was fortunate to learn:",
+
+    "points": {
+      "fundamentals": "Programming fundamentals.",
+      "dataStructures": "Data structures and their importance in building high-performance and scalable websites.",
+      "modernTools": "How to use modern packages while developing strong research skills to build professional websites.",
+      "aiTools": "How to use AI tools in website development—breaking the barrier of working with them and learning how to write strong prompts to complete tasks faster and improve code quality.",
+      "teamwork": "How to collaborate professionally with team members through courses provided by the diploma."
+    },
+
+    "mindset": "Following the diploma instructors reshaped my mindset, moving me from simply writing code to understanding the strategic business value of a website."
+  },
+  "comment": {
+    "title": "Leave a comment for me",
+    "subtitle": "Your advice can help me get better.",
+    "placeholder": "Write your message here...",
+    "button": "Send"
   }
 }

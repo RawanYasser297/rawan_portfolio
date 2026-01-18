@@ -2,6 +2,11 @@ import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 const projects = [
   {
@@ -28,13 +33,14 @@ const projects = [
     github: "https://github.com/RawanYasser297/around-the-world",
     img: "/image/around-the-world.png",
   },
-  { id:"todo",
-      gradient: "from-blue-500 to-cyan-500",
-      tags: ["HTML", "SCSS", "JS", "light/dark theme"],
-      live: "https://rawanyasser297.github.io/todo-list/",
-      github: "https://github.com/RawanYasser297/todo-list.git",
-      img: "/image/todo/desc.png",
-    },
+  {
+    id: "todo",
+    gradient: "from-blue-500 to-cyan-500",
+    tags: ["SCSS", "JS", "light/dark theme"],
+    live: "https://rawanyasser297.github.io/todo-list/",
+    github: "https://github.com/RawanYasser297/todo-list.git",
+    img: "/image/todo/desc.png",
+  },
 ];
 
 const Projects = () => {
@@ -44,21 +50,33 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-4 bg-[#ffeefd]"
+      className="container max-w-[85%] mx-auto py-24"
       dir={isArabic ? "rtl" : "ltr"}
     >
-      <div className="container mx-auto max-w-7xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
-          <span className="gradient-text">{t("projects.title")}</span>
-        </h2>
+      <h2 className="sectionHeader">
+        <span className="gradient-text">{t("projects.title")}</span>
+      </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={project.id}
-              className="overflow-hidden border-2 hover-lift animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+      <Swiper
+        modules={[Pagination]}
+        pagination={{ clickable: true }}
+        dir="rtl" // ✅ force RTL
+
+        spaceBetween={24}
+        slidesPerView={1} // default = mobile
+        breakpoints={{
+          768: {
+            slidesPerView: 2, // md
+          },
+          1024: {
+            slidesPerView: 3, // lg
+          },
+        }}
+        style={{ direction: "rtl",height:"500px" }} // ✅ very important fix
+      >
+        {projects.map((project) => (
+          <SwiperSlide key={project.id} className="max-h-[450px]">
+            <Card className="overflow-hidden border-2 hover-lift h-full">
               <div className={`h-48 bg-gradient-to-br ${project.gradient}`}>
                 <img
                   src={project.img}
@@ -67,16 +85,22 @@ const Projects = () => {
                 />
               </div>
 
-              <CardContent className="p-6 space-y-4">
+              <CardContent
+                className={`flex flex-col ${
+                  !isArabic && "text-end"
+                } p-6 space-y-4`}
+              >
                 <h3 className="text-2xl font-bold">
                   {t(`projects.items.${project.id}.title`)}
                 </h3>
 
-                <p className="text-muted-foreground">
+                <p
+                  className={`text-muted-foreground  ${!isArabic && "text-end"}`}
+                >
                   {t(`projects.items.${project.id}.description`)}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className={`flex flex-wrap gap-2 ${!isArabic && "justify-end"}`}>
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -107,9 +131,9 @@ const Projects = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 };

@@ -2,19 +2,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-/**
- * CyberHero.tsx
- * Fullscreen hero background with hybrid mesh (wireframe + points + subtle solid)
- * - Pink-Purple cyber glow
- * - Dynamic wave motion (medium speed)
- * - Mouse interaction (behind title)
- *
- * Paste this component into your React app and render <CyberHero /> near root.
- */
 
-/* -------------------------
-   Utility: pseudo "wave noise"
-   ------------------------- */
 function waveNoise(x: number, y: number, z: number, t: number) {
   // combinational trig-based pseudo-noise — cheap and organic-looking
   const a = Math.sin(x * 1.6 + t * 0.9) * Math.cos(y * 1.9 - t * 0.6);
@@ -23,12 +11,7 @@ function waveNoise(x: number, y: number, z: number, t: number) {
   return (a + b + c) * 0.33;
 }
 
-/* -------------------------
-   Three Object: HybridBlob
-   - creates an icosahedron-based geometry
-   - three layers: subtle standard mesh, wireframe, points
-   - animates vertex positions & points via buffer attribute updates
-   ------------------------- */
+
 const HybridBlob: React.FC = () => {
   const meshRef = useRef<THREE.Mesh | null>(null);
   const wireRef = useRef<THREE.Mesh | null>(null);

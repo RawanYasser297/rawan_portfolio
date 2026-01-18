@@ -27,11 +27,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-4 bg-[#ffeefd]"
+      className="relative py-24 px-4"
       dir={isArabic ? "rtl" : "ltr"}
     >
-      <div className="container mx-auto max-w-4xl text-center">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8">
+      <div className="container mx-auto max-w-4xl text-center overflow-hidden">
+        <h2 className="sectionHeader">
           <span className="gradient-text">{t("contact.title")}</span>
         </h2>
 
@@ -60,13 +60,9 @@ const Contact = () => {
             </Button>
           ))}
         </div>
-
+        
         {/* CTA */}
-        <Button
-          size="lg"
-          className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 shadow-lg hover:shadow-xl transition-all"
-          asChild
-        >
+        <Button size="lg" className="glowingButton" asChild>
           <a href="mailto:rawan2972000@gmail.com">
             <Mail className="w-5 h-5 mr-2" />
             {t("contact.send")}
@@ -75,9 +71,7 @@ const Contact = () => {
 
         {/* Footer */}
         <div className="mt-24 pt-12 border-t border-border">
-          <p className="text-muted-foreground">
-            {t("contact.copyright")}
-          </p>
+          <p className="text-muted-foreground">{t("contact.copyright")}</p>
         </div>
       </div>
     </section>

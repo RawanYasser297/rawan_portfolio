@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 const skillCategories = [
   {
     id: "frontend",
-    skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Vue.js"],
+    skills: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
     id: "design",
@@ -29,7 +29,7 @@ const Skills = () => {
       dir={isArabic ? "rtl" : "ltr"}
     >
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
+        <h2 className="sectionHeader">
           <span className="gradient-text">{t("skills.title")}</span>
         </h2>
 
@@ -52,7 +52,7 @@ const Skills = () => {
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 text-white font-medium hover:scale-105 transition-transform cursor-default"
+                    className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 text-black font-medium hover:scale-105 transition-transform cursor-default"
                   >
                     {skill}
                   </span>

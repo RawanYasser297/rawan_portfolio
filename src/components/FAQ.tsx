@@ -25,13 +25,11 @@ export default function FAQ() {
   const isArabic = i18n.language === "ar";
 
   return (
-    <section id="faq" className="py-24 px-4 bg-[#fce9fa]">
+    <section id="faq" className="py-24 px-4">
       <div className="container mx-auto max-w-3xl">
         {/* Title */}
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
-          <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-            {t("faq.title")}
-          </span>
+          <span className="gradient-text">{t("faq.title")}</span>
         </h2>
 
         {/* FAQ List */}

@@ -1,62 +1,103 @@
-function About() {
+import { useTranslation } from "react-i18next";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import PdfViewer from "./PdfViewer";
+
+const certifications = [
+  {
+    id: 1,
+    title: "Front-End Development Diploma",
+    image: "../../public/certifications/Rawan-React-Deep-Dive-شهادة-اتمام-دورة-أساسيات-React-Deep-Dive-منصة-المدرسة (1).pdf",
+  },
+  {
+    id: 2,
+    title: "AI Tools for Developers",
+    image: "../../public/certifications/Rawan-مدخل-إلى-الذكاء-الاصطناعي-شهادة-اتمام-دورة-Introduction-to-AI-منصة-المدرسة.pdf",
+  },
+  {
+    id: 3,
+    title: "Team Collaboration & Git",
+    image: "../../public/certifications/Rawan-دورة-تعليم-Git-وجيت-هب-GitHub-Git-and-GitHub-منصة-المدرسة.pdf",
+  },
+  {
+    id: 4,
+    title: "Data Structures & Algorithms",
+    image: "../../public/certifications/Rawan-هياكل-البيانات-الأساسية-شهادة-اتمام-دورة-هياكل-البيانات-هياكل-البيانات-الأساسية-منصة-المدرسة.pdf",
+  },
+];
+
+const About = () => {
+  const { t } = useTranslation();
+
   return (
-    <section id="about" className="py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 animate-fade-in">
-          <span className="gradient-text">About Me</span>
-        </h2>
+    <section className="relative py-20">
+      <div className="container mx-auto px-4 space-y-24">
+        <div className="relative">
+          <img
+            src="/image/me.jpg"
+            alt="Profile"
+            className="
+      float-right
+      w-32 h-32
+      md:w-40 md:h-40
+      rounded-2xl
+      object-cover
+      ml-6 mb-4
+      shadow-[var(--shadow-soft)]
+      ring-4 ring-primary/10
+    "
+          />
+          <div className="space-y-6 text-muted-foreground leading-relaxed">
+            <h4 className="-mb-5">{t("about.hi")}</h4>
+            <p>{t("about.intro")}</p>
+            <p>{t("about.journey")}</p>
+            <p>{t("about.platform")}</p>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left Column – Description */}
-          <div className="space-y-6 animate-fade-in-up">
-            <p className="text-lg md:text-xl text-white leading-relaxed">
-              Hi, I’m <span className="font-semibold">Rawan Yasser</span>, a
-              passionate Frontend Developer from Egypt.
-            </p>
+            <ul className="space-y-2 list-disc list-inside">
+              <li>{t("about.points.fundamentals")}</li>
+              <li>{t("about.points.dataStructures")}</li>
+              <li>{t("about.points.modernTools")}</li>
+              <li>{t("about.points.aiTools")}</li>
+              <li>{t("about.points.teamwork")}</li>
+            </ul>
 
-            <p className="text-lg md:text-xl text-white leading-relaxed">
-              I specialize in building modern, scalable web applications using
-              <span className="font-semibold"> React</span> and
-              <span className="font-semibold"> TypeScript</span>, with a strong
-              focus on clean architecture and best practices.
-            </p>
-
-            <p className="text-lg md:text-xl text-white leading-relaxed">
-              I care deeply about performance, maintainability, and delivering
-              real value through thoughtful and efficient solutions.
+            <p className="pt-4 font-medium text-foreground">
+              {t("about.mindset")}
             </p>
           </div>
 
-          {/* Right Column – Personal Info */}
-          <div className="animate-fade-in-up">
-            <div className="bg-white/10 border border-white/10 rounded-2xl p-8 space-y-4">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Name</span>
-                <span className="text-white font-medium">Rawan Yasser</span>
-              </div>
+          <div className="clear-both" />
+        </div>
 
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Country</span>
-                <span className="text-white font-medium">Egypt</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Age</span>
-                <span className="text-white font-medium">Your Age</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Stack</span>
-                <span className="text-white font-medium">
-                  React, TypeScript
-                </span>
-              </div>
-            </div>
-          </div>
+        <div className="space-y-8">
+          <h2 className="text-2xl font-semibold text-center">Certifications</h2>
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={24}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            style={{ direction: "rtl",height:"330px" }}
+          >
+            {certifications.map((cert) => (
+              <SwiperSlide key={cert.id}>
+                <div className="rounded-2xl h-[280px] max-w-[380px] overflow-hidden bg-card shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition">
+                  <PdfViewer fileUrl={cert.image} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default About;
