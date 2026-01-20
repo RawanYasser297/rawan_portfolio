@@ -74,7 +74,7 @@ const Header = () => {
     </nav>
   );
   const menu = (
-    <img src="../../public/image/menu (2).png" alt="" className="w-[30px] cursor-pointer hover:scale-105 transition-all" onClick={()=>setShow(!show)} />
+    <img src="/image/menu (2).png" alt="" className="w-[30px] cursor-pointer hover:scale-105 transition-all" onClick={()=>setShow(!show)} />
   );
 
   const mobile = (
