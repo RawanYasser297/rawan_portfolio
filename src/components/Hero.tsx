@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 const onButtonClick = () => {
   const link = document.createElement("a");
-  link.href = "/image/Black and White Minimalist Accountant Resume.pdf";
+  link.href = "/image/Rawan_Yasser_Junior_Full_Stack_Developer_CV.pdf";
   link.target = "_blank";
-  link.download = "RawanYasser_CV.pdf";
+  link.download = "Rawan_Yasser_Junior_Full_Stack_Developer_CV";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

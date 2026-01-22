@@ -61,18 +61,18 @@ const Projects = () => {
         modules={[Pagination]}
         pagination={{ clickable: true }}
         dir="rtl" // ✅ force RTL
-
+        
         spaceBetween={24}
         slidesPerView={1} // default = mobile
         breakpoints={{
           768: {
-            slidesPerView: 2, // md
+            slidesPerView: 1,
           },
           1024: {
-            slidesPerView: 3, // lg
+            slidesPerView: 2,
           },
         }}
-        style={{ direction: "rtl",height:"500px" }} // ✅ very important fix
+        style={{ direction: "rtl", height:500 }} // ✅ very important fix
       >
         {projects.map((project) => (
           <SwiperSlide key={project.id} className="max-h-[450px]">
@@ -86,7 +86,7 @@ const Projects = () => {
               </div>
 
               <CardContent
-                className={`flex flex-col ${
+                className={`flex flex-col text-start ${
                   !isArabic && "text-end"
                 } p-6 space-y-4`}
               >
@@ -95,7 +95,7 @@ const Projects = () => {
                 </h3>
 
                 <p
-                  className={`text-muted-foreground  ${!isArabic && "text-end"}`}
+                  className={`hidden sm:flex text-muted-foreground  ${!isArabic && "text-end"}`}
                 >
                   {t(`projects.items.${project.id}.description`)}
                 </p>
