@@ -86,16 +86,14 @@ const Projects = () => {
               </div>
 
               <CardContent
-                className={`flex flex-col text-start ${
-                  !isArabic && "text-end"
-                } p-6 space-y-4`}
+                className={`w-full flex flex-col   p-6 space-y-4`}
               >
-                <h3 className="text-2xl font-bold">
+                <h3 className={`text-2xl font-bold flex flex-wrap gap-2 ${!isArabic && "justify-end"}`}>
                   {t(`projects.items.${project.id}.title`)}
                 </h3>
 
                 <p
-                  className={`hidden sm:flex text-muted-foreground  ${!isArabic && "text-end"}`}
+                  className={`hidden sm:flex flex-wrap gap-2 ${!isArabic && "justify-end"}`} 
                 >
                   {t(`projects.items.${project.id}.description`)}
                 </p>
