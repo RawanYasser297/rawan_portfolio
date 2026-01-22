@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const onButtonClick = () => {
   const link = document.createElement("a");
-  link.href = "/image/Rawan_Yasser_Junior_Full_Stack_Developer_CV.pdf";
+  link.href = "/CV/Rawan_Yasser_Junior_Full_Stack_Developer_CV.pdf";
   link.target = "_blank";
   link.download = "Rawan_Yasser_Junior_Full_Stack_Developer_CV";
   document.body.appendChild(link);
