@@ -1,108 +1,80 @@
 import { useEffect, useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
+
+const NAV_ITEMS = ["home", "projects", "skills", "about", "contact"];
 
 const Header = () => {
   const { t } = useTranslation();
-  const [scrolled, setScrolled] = useState(false);
-  const [show, setShow] = useState(false);
-  const [mobileWidth, setMobileWidth] = useState(true);
-
   const location = useLocation();
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  /* ================= Scroll Background ================= */
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location]);
-
-  useEffect(() => {
-    if (window.innerWidth > 400) {
-      setMobileWidth(false);
-    }
   }, []);
 
-  const next = (e, id) => {
-    e.preventDefault();
+  /* ================= Screen Size ================= */
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(media.matches);
 
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  /* ================= Navigation Logic ================= */
+  const handleNavigate = (id) => {
+    setMenuOpen(false);
+
+    // About page is a separate route
     if (id === "about") {
-      nav("/about");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // Smooth animation
-      });
+      navigate("/about");
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
+    // If not on home page → go home first then scroll
     if (location.pathname !== "/") {
-      nav(`/#${id}`);
+      navigate(`/#${id}`);
       return;
     }
 
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => {
-      nav("/");
-    }, 1);
+    // Scroll inside home page
+    const section = document.getElementById(id);
+    section?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const laptop = (
-    <nav className=" z-10 flex  justify-between items-center">
-      <ul className="flex flex-row gap-4 sm:gap-6">
-        {["home", "projects", "skills", "about", "contact"].map((id) => (
-          <li
-            key={id}
-            className="text-sm sm:text-base md:text-lg font-semibold text-[hsl(229,75%,70%)]/80 hover:text-[hsl(229,75%,70%)] transition cursor-pointer"
+  /* ================= Nav Items ================= */
+  const NavLinks = ({ vertical = false }) => (
+    <ul className={`flex ${vertical ? "flex-col" : "flex-row"} gap-4 sm:gap-6`}>
+      {NAV_ITEMS.map((id) => (
+        <li
+          key={id}
+          className="text-sm sm:text-base md:text-lg font-semibold 
+                     text-[hsl(229,75%,70%)]/80 hover:text-[hsl(229,75%,70%)] 
+                     transition cursor-pointer"
+        >
+          <button
+            onClick={() => handleNavigate(id)}
+            className="bg-transparent border-none p-0 cursor-pointer"
           >
-            <button
-              onClick={(e) => next(e, id)}
-              className="bg-transparent border-none p-0 cursor-pointer"
-            >
-              {t(`nav.${id}`)}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-  const menu = (
-    <img
-      src="/image/menu (2).png"
-      alt=""
-      className="w-[30px] cursor-pointer hover:scale-105 transition-all"
-      onClick={() => setShow(!show)}
-    />
-  );
-
-  const mobile = (
-    <nav
-      className={`absolute w-full bg-background left-0 top-16  h-fit p-4 z-10 flex  justify-between items-center ${show ? "hidden opacity-100" : "visible opacity-0"} transition-all`}
-    >
-      <ul className="flex flex-col gap-4 sm:gap-6">
-        {["home", "projects", "skills", "about", "contact"].map((id) => (
-          <li
-            key={id}
-            className="text-sm sm:text-base md:text-lg font-semibold text-[hsl(229,75%,70%)]/80 hover:text-[hsl(229,75%,70%)] transition cursor-pointer"
-            onClick={() => setShow(false)}
-          >
-            <button
-              onClick={(e) => next(e, id)}
-              className="bg-transparent border-none p-0 cursor-pointer"
-            >
-              {t(`nav.${id}`)}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+            {t(`nav.${id}`)}
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 
   return (
@@ -111,11 +83,36 @@ const Header = () => {
         scrolled ? "bg-background" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto z-10 flex  flex-row  w-full p-4 sm:p-6  justify-between items-center">
-        {mobileWidth ? menu : laptop}
-        {mobile}
-        <LanguageSwitcher />
+      <div className="container mx-auto flex w-full p-4 sm:p-6 justify-between items-center">
+
+        {/* Logo / Left Side */}
+        <div />
+
+        {/* Desktop Nav */}
+        {!isMobile && <NavLinks />}
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+
+          {/* Mobile Menu Button */}
+          {isMobile && (
+            <img
+              src="/image/menu (2).png"
+              alt="menu"
+              className="w-[30px] cursor-pointer hover:scale-105 transition"
+              onClick={() => setMenuOpen((prev) => !prev)}
+            />
+          )}
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobile && menuOpen && (
+        <nav className="absolute left-0 top-full w-full bg-background p-6 shadow-lg z-20">
+          <NavLinks vertical />
+        </nav>
+      )}
     </header>
   );
 };
