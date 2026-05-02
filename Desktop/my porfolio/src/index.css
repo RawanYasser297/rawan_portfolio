@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 270 50% 96%;
+
+    --card: 240 10% 7%;
+    --card-foreground: 270 50% 96%;
+
+    --popover: 240 10% 7%;
+    --popover-foreground: 270 50% 96%;
+
+    /* Main Brand */
+    --primary: 271 91% 65%; /* Neon Purple */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 262 84% 68%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 10% 70%;
+
+    --accent: 273 90% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 45% 30%;
+    --input: 240 8% 16%;
+    --ring: 271 91% 65%;
+
+    --radius: 1rem;
+
+    /* Gradient Colors */
+    --gradient-indigo: 262 84% 68%;
+    --gradient-blue: 271 91% 65%;
+    --gradient-pink: 280 91% 71%;
+    --gradient-cyan: 262 84% 68%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(var(--gradient-indigo)) 0%,
+      hsl(var(--gradient-blue)) 50%,
+      hsl(var(--gradient-pink)) 100%
+    );
+
+    --gradient-cool: linear-gradient(
+      135deg,
+      hsl(var(--gradient-cyan)) 0%,
+      hsl(var(--gradient-blue)) 50%,
+      hsl(var(--gradient-indigo)) 100%
+    );
+
+    --gradient-soft: linear-gradient(
+      135deg,
+      hsl(var(--gradient-indigo) / 0.15) 0%,
+      hsl(var(--gradient-blue) / 0.15) 100%
+    );
+
+    /* Shadows */
+    --shadow-glow: 0 25px 60px -20px hsl(var(--gradient-blue) / 0.45);
+    --shadow-soft: 0 12px 35px -15px hsl(var(--gradient-indigo) / 0.25);
+
+    /* Transitions */
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  /* * {
+    @apply border-border;
+  } */
+
+  body {
+    background:
+      radial-gradient(900px 500px at 20% 0%, hsl(var(--gradient-blue) / 0.12), transparent 70%),
+      radial-gradient(700px 420px at 100% 30%, hsl(var(--gradient-indigo) / 0.16), transparent 70%),
+      hsl(var(--background));
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  html,
+  #root {
+    overflow-x: hidden;
+  }
+
+  .glowingButton {
+    @apply bg-primary shadow-[var(--shadow-glow)] hover:scale-105 transition;
+  }
+
+  .sectionHeader {
+    @apply text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-10 md:mb-16 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-bg {
+    background-image: var(--gradient-primary);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl bg-[#0b0b0f]/85 border border-[#A855F7]/25;
+  }
+
+  .glass-card-suc {
+    @apply bg-[#0b0b0f]/85 backdrop-blur-md border border-[#A855F7]/25
+            rounded-2xl shadow-lg p-6;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: hsl(var(--primary));
+}
+
+
+
+
+.swiper-rtl-fix {
+  direction: rtl;
+}
+
+.swiper-rtl-fix {
+  direction: rtl;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@layer utilities {
+  .hero-fade-in {
+    animation: heroFadeIn 0.9s ease-out both;
+  }
+
+  .hero-float {
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
